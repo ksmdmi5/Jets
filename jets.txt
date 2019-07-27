@@ -1,0 +1,5 @@
+SR-71 Blackbird, 2198, 3250, 34000000, fighter
+C-17 Globemaster, 518, 2785, 217000000, cargo
+Virgin Atlatic GlobalFlyer, 342, 25766, 1500000, civilian
+F-22 Raptor, 1500, 1841, 150000000, fighter
+Antonov An-124 Ruslan, 537, 2299, 100000000, cargo
