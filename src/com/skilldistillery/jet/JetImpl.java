@@ -10,10 +10,10 @@ public class JetImpl extends Jet {
 		super(model, speed, range, price, type);
 	}
 
-	public JetImpl(double mach) {
-		super(mach);
-		// TODO Auto-generated constructor stub
-	}
+//	public JetImpl(double mach) {
+//		super(mach);
+//		// TODO Auto-generated constructor stub
+//	}
 
 	
 }

@@ -8,17 +8,10 @@ public class Cargo extends Jet implements TrashHauler {
 
 	public Cargo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Cargo(String model, double speed, int range, long price, String type) {
 		super(model, speed, range, price, type);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Cargo(double mach) {
-		super(mach);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -29,13 +22,13 @@ public class Cargo extends Jet implements TrashHauler {
 
 	@Override
 	public void tieDown() {
-		System.out.println("You're sure everythings strapped down?");
+		System.out.println("You're sure everythings strapped down?\n");
 
 	}
 
 	@Override
 	public void jump() {
-		System.out.println("Jumpers hit it... Airborne!");
+		System.out.println("Keep your feet and knees together... Airborne!\n");
 	}
 
 }

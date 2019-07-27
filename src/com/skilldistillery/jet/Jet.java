@@ -3,7 +3,6 @@ package com.skilldistillery.jet;
 public abstract class Jet {
 	private String model;
 	private double speed;
-	private double mach;
 	private int range;
 	private long price;
 	private String type;
@@ -18,11 +17,6 @@ public abstract class Jet {
 		this.range = range;
 		this.price = price;
 		this.type = type;
-	}
-	public Jet(double mach) {
-		super();
-		this.mach = mach;
-		
 	}
 	
 	public String getModel() {
@@ -43,10 +37,10 @@ public abstract class Jet {
 	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
-	public double getMach(double mach) {
-		mach = speed/761;
-		return mach;
-	}
+//	public double getMach(double mach) {
+//		mach = speed/761;
+//		return mach;
+//	}
 	public int getRange() {
 		return range;
 	}

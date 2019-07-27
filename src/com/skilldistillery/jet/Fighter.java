@@ -8,10 +8,6 @@ public class Fighter extends Jet implements Combat {
 		super(model, speed, range, price, type);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Fighter(double mach) {
-		super(mach);
-	}
 
 	@Override
 	public void fight() {
