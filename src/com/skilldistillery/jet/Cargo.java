@@ -1,10 +1,6 @@
 package com.skilldistillery.jet;
 
-import java.util.Scanner;
-
 public class Cargo extends Jet implements TrashHauler {
-
-//	
 
 	public Cargo() {
 		super();

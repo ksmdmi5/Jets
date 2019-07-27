@@ -8,6 +8,7 @@ public class Airfield {
 	String file = "jets.txt";
 	List<Jet> allJets;
 	Scanner kb = new Scanner(System.in);
+	
 
 	public Airfield() {
 		allJets = new ArrayList<Jet>();
@@ -57,7 +58,7 @@ public class Airfield {
 				whosLongest();
 				break;
 			case 5:
-				loadCargo(kb);
+				loadCargo();
 				break;
 			case 6:
 				dogFight();
@@ -71,15 +72,14 @@ public class Airfield {
 			case 9:
 				System.out.println("Goodbye.");
 				menu = false;
+				kb.close();
 				break;
 //				System.exit(0);
 			default:
 				System.out.println("Sure hope you fly better\n" + "than you type.");
 			}
-			kb.close();
 			break;
 		}
-
 	}
 
 	private List<Jet> getJets(String file) {
@@ -91,7 +91,6 @@ public class Airfield {
 				String[] jetList = line.split(", ");
 				String model = jetList[0];
 				double speed = Double.parseDouble(jetList[1]);
-//				double mach = Double.parseDouble());
 				int range = Integer.parseInt(jetList[2]);
 				long price = Long.parseLong(jetList[3]);
 				String type = jetList[4];
@@ -156,7 +155,8 @@ public class Airfield {
 				fastest = jet.getSpeed();
 				fastJ = jet;
 			}
-		} System.out.println(fastJ.getModel() + " is the fastest at " + fastest + "mph");
+		}
+		System.out.println(fastJ.getModel() + " is the fastest at " + fastest + "mph");
 		System.out.println("Continue (Y/N)");
 		String cont = kb.next();
 		if (cont.equalsIgnoreCase("y")) {
@@ -175,7 +175,8 @@ public class Airfield {
 				range = jet.getRange();
 				longRangeJet = jet;
 			}
-		} System.out.println(longRangeJet.getModel() + " has the greatest range at " + range + "miles.\n");
+		}
+		System.out.println(longRangeJet.getModel() + " has the greatest range at " + range + "miles.\n");
 		System.out.println("Continue (Y/N)");
 		String cont = kb.next();
 		if (cont.equalsIgnoreCase("y")) {
@@ -185,68 +186,29 @@ public class Airfield {
 		}
 	} // LONGEST
 
-	public void loadCargo(Scanner kb) throws InterruptedException {
-		boolean menu = true;
-		int choice = 0;
+	public void loadCargo() throws InterruptedException {
 		for (Jet jet : allJets) {
 			String type = jet.getType();
-			if (type.equalsIgnoreCase("cargo")) {
-				while (menu = true) {
-					System.out.println(jet.getModel() + ": ");
-					System.out.println("What would you like to do?\n" + "1: Load cargo\n" + "2: Jump\n" + "3: Menu");
-					choice = kb.nextInt();
-					switch (choice) {
-					case 1:
-						Thread.sleep(500);
-						((TrashHauler) jet).loadCargo();
-						Thread.sleep(500);
-						((TrashHauler) jet).tieDown();
-						break;
-					case 2:
-						((TrashHauler) jet).jump();
-						System.out.println();
-						break;
-					case 3:
-						System.out.println("Going back");
-						fly();
-						break;
-					}
-				}
+			if(type.equalsIgnoreCase("cargo")) {
+				System.out.println(jet.getModel()+": ");
+			} if (jet instanceof TrashHauler) {
+				((TrashHauler) jet).loadCargo();
+				((TrashHauler) jet).tieDown();
 			}
-		}
-	} // LOADCARGO
-
+		} fly();
+	} //LOADCARGO
 	public void dogFight() throws InterruptedException {
-		boolean menu = true;
-		int choice = 0;
 		for (Jet jet : allJets) {
 			String type = jet.getType();
-			if (type.equalsIgnoreCase("fighter")) {
-				System.out.println(jet.getModel() + ": ");
-				while (menu = true) {
-					System.out.println(jet.getModel() + ": ");
-					System.out.println("What would you like to do?\n" + "1: Dogfight\n" + "2: Maneuver\n" + "3: Main menu");
-					choice = kb.nextInt();
-					switch (choice) {
-					case 1:
-						Thread.sleep(500);
-						((Fighter) jet).fight();
-						System.out.println();
-						break;
-					case 2:
-						Thread.sleep(500);
-						((Fighter) jet).maneuver();
-						System.out.println();
-						break;
-					case 3:
-						System.out.println("Exiting");
-						fly();
-						break;
-					}
-				}
-				break;
+			if(type.equalsIgnoreCase("fighter")) {
+				System.out.println(jet.getModel()+": ");
 			}
-		}
+			if (jet instanceof Fighter) {
+				((Fighter) jet).fight();
+				((Fighter) jet).maneuver();
+				System.out.println();
+			}
+		} fly();
 	}// DOGFIGHT
 
 	public void addJet(Scanner kb) throws InterruptedException {
